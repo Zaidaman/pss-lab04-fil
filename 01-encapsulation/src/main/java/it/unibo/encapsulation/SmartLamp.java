@@ -4,7 +4,7 @@ public class SmartLamp {
 
     private boolean light = false;
     private int intensity = 0;
-    private String color = "bianco";
+    private String color = "white";
 
     public SmartLamp(boolean light, int intensity, String color){
         this.light = light;
@@ -13,26 +13,19 @@ public class SmartLamp {
     }
 
     public boolean getLight(){
-        return light
+        return this.light;
     }
 
     public int getIntensity(){
-        return intensity
+        return this.intensity;
     }
 
     public String getColor(){
-        return color
+        return this.color;
     }
 
     public void switchLight(){
-        if light == false{
-            light = true;
-            System.Out.println("You turned on the light");
-        }
-        else{
-            light = false;
-            System.Out.println("You turned off the light");
-        }
+        this.light = !this.light;
     }
 
     public void switchIntensity(int n){
@@ -41,17 +34,11 @@ public class SmartLamp {
             break;
         }
 
-        if n<=1{
-            intensity = 1;
-        }
-        else if n>=3{
-            intensity = 3;
-        }
-        else if n == 2{
-            intensity = 2;
+        if n >= 1 && n <= 3{
+            this.intensity = n;
         }
         else{
-            intensity = 1;
+            this.intensity = 1;
         }
     }
 
@@ -61,20 +48,13 @@ public class SmartLamp {
             break;
         }
 
-        if n <= 0 || n > 3{
-            color = "white";
-        }
-        else if n == 1{
-            color = "red";
-        }
-        else if n == 2{
-            color = "blue";
-        }
-        else if n == 3{
-            color = "green";
+        private final String[] colorPalette = ["white","red","blue","green"];
+
+        if n <= colorPalette.lenght && n > 0{
+            this.color = colorPalette[n];
         }
         else{
-            color = "white";
+            this.color = "white";
         }
     }
 
